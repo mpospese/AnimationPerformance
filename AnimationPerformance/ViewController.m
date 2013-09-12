@@ -63,7 +63,8 @@
 {
     UIView *box = [self makeBoxWithFrame:CGRectMake(0, 0, BOX_SIZE, BOX_SIZE)];
     // turn on rasterizing to flatten the box view's sub-tree for better performance
-    box.layer.shouldRasterize = YES;
+    // Now that we're setting shadowPath, try disabling rasterization
+    //box.layer.shouldRasterize = YES;
     
     [self.view addSubview:box];
     [self.boxes addObject:box];
