@@ -82,11 +82,12 @@
 }
 - (UIView *)makeBoxWithFrame:(CGRect)frame
 {
-    MyAwesomeView *box = [[MyAwesomeView alloc] initWithFrame:frame];
-    box.backgroundColor = [UIColor clearColor];
-    box.color = [UIColor colorWithRed:arc4random_uniform(256)/255.f green:arc4random_uniform(256)/255.f blue:arc4random_uniform(256)/255.f alpha:1];
+    // Switch from MyAwesomeView (implements drawRect:) to a plain UIView and cornerRadius set on its layer
+    UIView *box = [[UIView alloc] initWithFrame:frame];
+    box.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.f green:arc4random_uniform(256)/255.f blue:arc4random_uniform(256)/255.f alpha:1];
     box.layer.shadowOpacity = 0.5;
     box.layer.shadowOffset = CGSizeMake(0, 3);
+    box.layer.cornerRadius = 5;
     
     // Set shadowPath to avoid an off-screen rendering pass just to calculate the drop shadow
     box.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:box.bounds cornerRadius:5].CGPath;
