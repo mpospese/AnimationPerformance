@@ -87,7 +87,10 @@
     box.color = [UIColor colorWithRed:arc4random_uniform(256)/255.f green:arc4random_uniform(256)/255.f blue:arc4random_uniform(256)/255.f alpha:1];
     box.layer.shadowOpacity = 0.5;
     box.layer.shadowOffset = CGSizeMake(0, 3);
-   
+    
+    // Set shadowPath to avoid an off-screen rendering pass just to calculate the drop shadow
+    box.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:box.bounds cornerRadius:5].CGPath;
+    
     if (frame.size.height > 20 && frame.size.width > 20)
     {
         UIView *subBox = [self makeBoxWithFrame:CGRectMake(10, 10, frame.size.width - 20, frame.size.height - 20)];
