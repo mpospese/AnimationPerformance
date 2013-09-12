@@ -88,6 +88,7 @@
     box.layer.shadowOpacity = 0.5;
     box.layer.shadowOffset = CGSizeMake(0, 3);
     box.layer.cornerRadius = 5;
+    box.layer.masksToBounds = YES;
     
     // Set shadowPath to avoid an off-screen rendering pass just to calculate the drop shadow
     box.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:box.bounds cornerRadius:5].CGPath;
